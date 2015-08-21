@@ -1,0 +1,11 @@
+<xdms:communication xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sev="http://www.eos.ru/2010/sev" xdms:version="2.2">
+  <xdms:header xdms:type="Квитанция" xdms:uid="0dc6ed68-ad1b-47da-9f53-8cfdfd344a10">
+    <xdms:source xdms:uid="8a471cff-98e4-4089-a962-b95a82efeab7">
+      <xdms:organization/>
+    </xdms:source>
+  </xdms:header>
+  <xdms:acknowledgment xdms:uid="9E57088E-00DB-4A67-A4F7-F4B734B39264">
+    <xdms:time>2015-04-06T14:09:41</xdms:time>
+    <xdms:accepted>true</xdms:accepted>
+  </xdms:acknowledgment>
+</xdms:communication>

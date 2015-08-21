@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.eos.ru/2010/sev" elementFormDefault="qualified" targetNamespace="http://www.eos.ru/2010/sev" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--
+  Отличия от ТЗ:
+  1. Не реализовано ограниение: "Reception Обязательный элемент только для уведомления о приеме сообщения. И отсутствует для других типов уведомления"  
+  2. Не реализовано ограниение: "Failure Обязательный элемент только для уведомления об отказе регистрации  . И отсутствует для других типов уведомления"
+  3. В элементе InitialDoc, контролировать обязательность значений атрибута VersionUID взависимости от значения какого-либо элемента/атрибута не получится.
+  -->
+  <xs:include schemaLocation="CommonInfo.xsd" />
+  <xs:element name="Report" nillable="true" type="tns:Report" />
+  <xs:complexType name="Report">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Header" type="tns:MessageHeader" />
+          <xs:element name="Notification" type="tns:Notification" />
+          <xs:element minOccurs="0" name="DocumentList" type="tns:DocumentList" />
+          <xs:element minOccurs="0" name="TaskList" type="tns:TaskList" />
+          <xs:element minOccurs="0" name="Expansion" type="tns:Expansion" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Notification">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="InitialDoc" type="tns:InitialDoc" />
+          <xs:element minOccurs="0" name="Reception" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Failure" type="tns:Failure" />
+          <xs:element minOccurs="0" name="Registration" type="tns:Registration" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Forwarding" type="tns:Forwarding" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Consideration" type="tns:Consideration" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Report" type="tns:TaskReport" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Redirection" type="tns:Redirection" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Answer" type="tns:Answer" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Direction" type="tns:DirectionType" />
+          <xs:element minOccurs="0" name="SignInformation" type="tns:SignInformationType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>	
+  <xs:complexType name="SignInformationType">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="DocumentID" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>	
+  <xs:complexType name="DirectionType">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact " type="tns:Contact" />
+          <xs:element name="Date " type="xs:dateTime" />
+        </xs:sequence>
+        <xs:attribute name="VisaSign" type="tns:VisaSignType" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="VisaSignType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Visa" />
+      <xs:enumeration value="Sign" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InitialDoc">
+    <xs:complexContent>
+      <xs:extension base="tns:UidRequired">
+        <xs:sequence>
+          <xs:element name="Number" type="xs:string" nillable="false" />
+          <xs:element name="Date" type="xs:date" />
+          <xs:element minOccurs="0" name="Group" type="tns:Group" />
+        </xs:sequence>
+        <xs:attribute name="VersionUID" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Failure">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="Code" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Registration">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="DocumentID" type="xs:string" />
+        <xs:attribute name="SystemDate" type="xs:dateTime" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Forwarding">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element name="Date" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Consideration">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="TaskID" type="xs:string" />
+        <xs:attribute name="InitialTaskUID" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TaskReport">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="TaskID" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Redirection">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element name="Contact" type="tns:Contact" />
+            <xs:element name="PrivatePerson" type="tns:PrivatePerson" />
+          </xs:choice>
+          <xs:element name="Date" type="xs:dateTime" />
+          <xs:element name="Type" type="tns:DeliveryType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DeliveryType">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Answer">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Date" type="xs:dateTime" />
+          <xs:element name="Type" type="tns:DeliveryType" />
+        </xs:sequence>
+        <xs:attribute name="DocumentID" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xdms:communication xdms:version="2.2" xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<xdms:header xdms:type="Документ" xdms:uid="51E410B7-DEE6-47D3-AB8C-EA3918683F60" xdms:created="2014-12-08T14:04:07">
+		<xdms:source xdms:uid="113674e4-123c-4845-8dc3-079861de0fa2">
+			<xdms:organization>Правительство Вологодской области</xdms:organization>
+		</xdms:source>
+	</xdms:header>
+	<xdms:document xdms:uid="113674e4-123c-4845-8dc3-079861406211" xdms:id="406211">
+		<xdms:kind>Документ</xdms:kind>
+		<xdms:num>
+			<xdms:number>ИХ.01-4258/14</xdms:number>
+			<xdms:date>2014-12-08</xdms:date>
+		</xdms:num><xdms:classification>Общий доступ</xdms:classification>
+		<xdms:insteadOfDistributed>0</xdms:insteadOfDistributed>
+		<xdms:signatories>
+			<xdms:signatory>
+				<xdms:region>Вологодская область</xdms:region>
+				<xdms:organization>Директор</xdms:organization>
+				<xdms:person>Тарасов А.(.</xdms:person>
+				<xdms:department>Бюджетное учреждение Вологодской области "Центр информационных технологий"</xdms:department>
+				<xdms:signed>2014-12-08</xdms:signed>
+			</xdms:signatory>
+		</xdms:signatories>
+		<xdms:addressees>
+			<xdms:addressee>
+				<xdms:organization>Администрация города Вологды</xdms:organization>
+			</xdms:addressee>
+		</xdms:addressees>
+		<xdms:pages>1</xdms:pages>
+		<xdms:enclosuresPages>0</xdms:enclosuresPages>
+		<xdms:annotation>ТЕСТ письма по интеграции с Администрацией г.Вологды</xdms:annotation>
+	</xdms:document>
+	<xdms:files>
+		<xdms:file xdms:localName="Документ.doc" xdms:localId="0" xdms:type="doc">
+			<xdms:group>Текст документа</xdms:group>
+			<xdms:description>Письмо исходящее № ИХ.01-4258/14 от 08.12.2014 в Администрация города Вологды,  ТЕСТ письма по интеграции с Администрацией г.Вологды.doc</xdms:description>
+		</xdms:file>
+	</xdms:files>
+</xdms:communication>

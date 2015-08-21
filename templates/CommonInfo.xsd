@@ -1,0 +1,617 @@
+﻿<xs:schema xmlns:tns="http://www.eos.ru/2010/sev" elementFormDefault="qualified" targetNamespace="http://www.eos.ru/2010/sev" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="MessageHeader">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Sender" type="tns:Sender" />
+          <xs:element name="Recipient" type="tns:Recipient" />
+          <xs:element name="ResourceList" type="tns:ResourceList" />
+        </xs:sequence>
+        <xs:attribute name="MessageID" type="xs:string" use="required" />
+        <xs:attribute name="Version" type="xs:string" use="required" />
+        <xs:attribute name="TimeZone" type="xs:int" />
+        <xs:attribute name="Time" type="xs:dateTime" use="required" />
+        <xs:attribute name="MessageType" type="tns:DocumentMessageType" use="required" />
+        <xs:attribute name="ReturnID" type="xs:string" use="required" />
+        <xs:attribute name="ResourceID" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sender">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element name="EDMS" type="tns:EDMS" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Contact">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Organization" type="tns:Organization" />
+          <xs:element minOccurs="0" name="Department" type="tns:Department" />
+          <xs:element minOccurs="0" name="OfficialPerson" type="tns:OfficialPerson" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" type="tns:Address" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Econtact" type="tns:Econtact" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Organization">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+          <xs:element name="ShortName" type="xs:string" />
+          <xs:element minOccurs="0" name="FullName" type="xs:string" nillable="false" />
+          <xs:element minOccurs="0" name="INN" type="xs:string" />
+          <xs:element minOccurs="0" name="OKPO" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- >>>>> -->
+  <!-- Иерархия базовых типов -->
+  <xs:complexType name="BaseComplexType" abstract="true" />      
+  <xs:complexType name="BaseSimpleContentStringComplexType" abstract="true">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>              
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="UidRequired" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="UID" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>       
+  </xs:complexType>
+  <xs:complexType name="UidOptional" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="UID" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>	  
+  </xs:complexType>
+
+  <xs:complexType name="SimpleContentUidRequired" abstract="true">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="UID" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SimpleContentUidOptional" abstract="true">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="UID" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- <<<<< -->
+
+  <xs:complexType name="Category">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ExecutionStatus">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="Executor">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Text" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Status" type="tns:ExecutionStatus" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="File" type="tns:DeloFile" />
+        </xs:sequence>
+        <xs:attribute name="Responsible" type="xs:boolean" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DeloFile">
+    <xs:complexContent>
+      <xs:extension base="tns:UidRequired">
+        <xs:sequence>
+          <xs:element name="Description" type="xs:string" nillable="false" />
+          <xs:element name="Extension" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="EDS" type="tns:EDS" />
+        </xs:sequence>
+        <xs:attribute name="ResourceID" type="xs:int" use="required" />
+        <xs:attribute name="Size" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="EDS">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="ResourceID" type="xs:int" use="required" />
+        <xs:attribute name="Date" type="xs:dateTime" />
+        <xs:attribute name="KindID" type="xs:int" />
+        <xs:attribute name="Certificate" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Task">
+    <xs:complexContent>
+      <xs:extension base="tns:UidRequired">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Number" type="xs:string" />
+          <xs:element minOccurs="0" name="Author" type="tns:ResolutionAuthor" />
+          <xs:element minOccurs="0" name="Text" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="File" type="tns:DeloFile" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Executor" type="tns:Executor" />
+          <xs:element minOccurs="0" name="Control" type="tns:Control" />
+          <xs:element minOccurs="0" name="Note" type="xs:string" />
+          <xs:element minOccurs="0" name="Category" type="tns:Category" />
+          <xs:element minOccurs="0" name="Parent" type="tns:Parent" />
+          <xs:element name="IsProject" type="xs:boolean" />
+        </xs:sequence>
+        <xs:attribute name="TaskID" type="xs:string" use="required" />
+        <xs:attribute name="Type" type="tns:TaskType" use="required" />
+        <xs:attribute name="Privacy" type="xs:boolean" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResolutionAuthor">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element name="SignDate" type="xs:date" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DocumentControl">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Deadline" type="xs:date" />
+          <xs:element minOccurs="0" name="FactDate" type="xs:date" />
+        </xs:sequence>
+        <xs:attribute name="State" type="tns:ControlState" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Control">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Deadline" type="xs:date" />
+          <xs:element minOccurs="0" name="Summary" type="xs:string" />
+          <xs:element minOccurs="0" name="FactDate" type="xs:date" />
+          <xs:element minOccurs="0" name="Resume" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="State" type="tns:ControlState" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ControlState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoControl" />
+      <xs:enumeration value="UnderControl" />
+      <xs:enumeration value="EndedControl" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Parent">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="DocumentID" type="xs:string" />
+        <xs:attribute name="TaskID" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TaskType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Resolution" />
+      <xs:enumeration value="Point" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LinkType">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>    
+  </xs:complexType>
+  <xs:complexType name="PrivatePerson">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+          <xs:element name="FIO" type="xs:string" nillable="false" />
+          <xs:element minOccurs="0" name="Sex" type="tns:Sex" />
+          <xs:element minOccurs="0" name="INN" type="xs:string" />
+          <xs:element minOccurs="0" name="Passport" type="tns:Passport" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" type="tns:Address" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Econtact" type="tns:Econtact" />
+          <xs:element minOccurs="0" name="SNILS" type="tns:String14Type" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="Sex">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Female" />
+      <xs:enumeration value="Male" />
+      <xs:enumeration value="Undefined" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Passport">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Series" type="xs:string" nillable="false" />
+          <xs:element name="Number" type="xs:string" nillable="false" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GivenBy" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Address">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ZipCode" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" type="tns:Region" />
+          <xs:element minOccurs="0" name="Settlement" type="xs:string" />
+          <xs:element minOccurs="0" name="Text" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Region">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Econtact">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="Type" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Rubric">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Access">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Group">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidOptional" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+          <xs:element name="RegistrationInfo" type="tns:RegistrationInfo" />
+    		  <xs:element minOccurs="0" name="Control" type="tns:DocumentControl" />			
+          <xs:element minOccurs="0" name="Group" type="tns:Group" />
+          <xs:element minOccurs="0" name="Access" type="tns:Access" />
+          <xs:element minOccurs="0" name="Consists" type="xs:string" />
+          <xs:element minOccurs="0" name="Annotation" type="xs:string" />
+          <xs:element minOccurs="0" name="Note" type="xs:string" />
+          <xs:element minOccurs="0" name="Collective" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Rubric" type="tns:Rubric" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="File" type="tns:DeloFile" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Author" type="tns:DocumentAuthor" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Visa" type="tns:Visa" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Approval" type="tns:Approval" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Addressee" type="tns:Addressee" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Writer" type="tns:Writer" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalField" type="tns:AdditionalField" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Link" type="tns:Link" />
+        </xs:sequence>
+        <xs:attribute name="DocumentID" type="xs:string" use="required" />
+        <xs:attribute name="Type" type="tns:DocumentType" use="required" />
+        <xs:attribute name="MainDocument" type="xs:boolean" use="required" />
+        <xs:attribute name="Status" type="tns:Status" />
+        <xs:attribute name="Version" type="xs:int" />
+		    <xs:attribute name="VersionUID" type="xs:string" />
+	  </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RegistrationInfo">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Number" type="xs:string" nillable="false" />
+          <xs:element name="Date" type="xs:date" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DocumentAuthor">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="RegistrationInfo" type="tns:RegistrationInfo" />
+          <xs:element minOccurs="0" name="PrivatePerson" type="tns:PrivatePerson" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Visa">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="SignDate" type="xs:date" />
+          <xs:element minOccurs="0" name="VisaInfo" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>	
+  <xs:complexType name="Approval">
+    <xs:complexContent>
+      <xs:extension base="tns:UidRequired">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="SignDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MainInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="AddInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentContact" type="tns:Contact" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="File" type="tns:DeloFile" />
+        </xs:sequence>
+        <xs:attribute name="Kind" type="tns:ApprovalKind" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ApprovalKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sign" />
+      <xs:enumeration value="Visa" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Addressee">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="PrivatePerson" type="tns:PrivatePerson" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Writer">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Contact" type="tns:Contact" />
+          <xs:element name="AddInfo" type="xs:string" minOccurs="0"  />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AdditionalField">
+    <xs:simpleContent>
+      <xs:extension base="tns:BaseSimpleContentStringComplexType">
+        <xs:attribute name="Name" type="xs:string" use="required" />
+        <xs:attribute name="Type" type="tns:AdditionalFieldType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="AdditionalFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="Decimal" />
+      <xs:enumeration value="Flag" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Link">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="LinkType" type="tns:LinkType" />
+        </xs:sequence>
+        <xs:attribute name="DocumentID" type="xs:string" />
+        <xs:attribute name="Description" type="xs:string" />
+        <xs:attribute name="URLString" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="DocumentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Created" />
+      <xs:enumeration value="Incoming" />
+      <xs:enumeration value="Project" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Created" />
+      <xs:enumeration value="AtSight" />
+      <xs:enumeration value="Initialed" />
+      <xs:enumeration value="AtSignature" />
+      <xs:enumeration value="Signed" />
+      <xs:enumeration value="NotSigned" />
+      <xs:enumeration value="AtRegistration1" />
+      <xs:enumeration value="AtRegistration2" />
+      <xs:enumeration value="Registered" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EDMS">
+    <xs:simpleContent>
+      <xs:extension base="tns:SimpleContentUidRequired">
+        <xs:attribute name="Version" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>        
+  </xs:complexType>
+  <xs:complexType name="OfficialPerson">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="FIO" type="xs:string" nillable="false" />
+					<xs:element minOccurs="0" name="Post" type="xs:string" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="Post" type="xs:string" />
+				</xs:sequence>
+			</xs:choice>
+          <xs:element minOccurs="0" name="Index" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Department">
+    <xs:complexContent>
+      <xs:extension base="tns:UidOptional">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string" nillable="false" />
+          <xs:element minOccurs="0" name="Index" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Recipient">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Contact" type="tns:Contact" />
+          <xs:element minOccurs="0" name="EDMS" type="tns:EDMS" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceList">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" type="tns:ResourceInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceInfo">
+    <xs:complexContent>
+      <xs:extension base="tns:UidRequired">
+        <xs:attribute name="UniqueName" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="DocumentMessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MainDoc" />
+      <xs:enumeration value="AddToDoc" />
+      <xs:enumeration value="Reception" />
+      <xs:enumeration value="Failure" />
+      <xs:enumeration value="Report" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DocumentList">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Document" type="tns:Document" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TaskList">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Task" type="tns:Task" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>		
+  <xs:complexType name="Subscriptions">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Reception" type="tns:SubscriptionEvent" />
+          <xs:element name="Registration" type="tns:SubscriptionEvent" />
+          <xs:element name="Forwarding" type="tns:SubscriptionEventAdvanceInfo" />
+          <xs:element name="Consideration" type="tns:SubscriptionEventAdvanceInfo" />
+          <xs:element name="TaskDecoration" type="tns:TaskDecoration" minOccurs="0" />
+          <xs:element name="Report" type="tns:SubscriptionEvent" />
+          <xs:element name="Redirection" type="tns:SubscriptionEvent" />
+          <xs:element name="Answer" type="tns:SubscriptionEvent" />
+          <xs:element name="VisaDirection" minOccurs="0" type="tns:SubscriptionEvent" />
+          <xs:element name="SignDirection" minOccurs="0" type="tns:SubscriptionEvent" />
+          <xs:element name="VisaInformation" minOccurs="0" type="tns:SubscriptionEvent" />
+          <xs:element name="SignInformation" minOccurs="0" type="tns:SubscriptionEvent" />
+        </xs:sequence>
+        <xs:attribute name="StopDayCount" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="Include" type="xs:boolean" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionEventAdvanceInfo">
+    <xs:complexContent>
+      <xs:extension base="tns:SubscriptionEvent">
+        <xs:attribute name="AdvanceInfo" type="tns:AdvanceInfoType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="AdvanceInfoType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="First" />
+      <xs:enumeration value="All" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Expansion">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:attribute name="Version" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TaskDecoration">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Text" type="tns:SubscriptionEvent" />
+          <xs:element name="Category" type="tns:SubscriptionEvent" />
+          <xs:element name="Note" type="tns:SubscriptionEvent" />
+          <xs:element name="ControlState" type="tns:SubscriptionEvent" />
+          <xs:element name="PlanDate" type="tns:SubscriptionEvent" />
+          <xs:element name="Controller" type="tns:SubscriptionEvent" />
+          <xs:element name="Summary" type="tns:SubscriptionEvent" />
+          <xs:element name="FactDate" type="tns:SubscriptionEvent" />
+          <xs:element name="Status" type="tns:SubscriptionEvent" />
+          <xs:element name="Resume" type="tns:SubscriptionEvent" />
+          <xs:element name="Executor" type="tns:SubscriptionEventAdvanceInfo" />
+          <xs:element name="ExecutorReport" type="tns:SubscriptionEvent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="String14Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="14"/>
+      <xs:minLength value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+  

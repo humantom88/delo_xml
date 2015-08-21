@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='WINDOWS-1251'?>
+<xdms:communication xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sev="http://www.eos.ru/2010/sev" xdms:version="2.2">
+  <xdms:header xdms:created="2014-11-27T16:41:51" xdms:type="Документ" xdms:uid="11FBC04A-44BC-4B82-842B-1B6EDFA57C23">
+    <xdms:source xdms:uid="8a471cff-98e4-4089-a962-b95a82efeab7">
+      <xdms:organization>Администрация города Вологды</xdms:organization>
+    </xdms:source>
+  </xdms:header>
+  <xdms:document xdms:uid="daaf1cc5-b9bd-40e7-b23e-8d1f2804d45d" xdms:id="11284314">
+    <xdms:num>
+      <xdms:number>100-100/1</xdms:number>
+      <xdms:date>2014-11-27</xdms:date>
+    </xdms:num>
+    <xdms:signatories>
+      <xdms:signatory>
+        <xdms:organization>Администрация города Вологды</xdms:organization>
+        <xdms:person>Ковтун И.А.</xdms:person>
+        <xdms:department>Отдел делопроизводства и архива (ОДА УД)</xdms:department>
+        <xdms:post>заместитель управляющего делами - начальник ОДА УД</xdms:post>
+        <xdms:signed>2014-11-27</xdms:signed>
+      </xdms:signatory>
+      <xdms:signatory>
+        <xdms:organization>Администрация города Вологды</xdms:organization>
+        <xdms:person>Малахова Н.В.</xdms:person>
+        <xdms:department>Управление делами (УД)</xdms:department>
+        <xdms:post>управляющий делами Администрации города Вологды</xdms:post>
+        <xdms:signed>2014-11-27</xdms:signed>
+      </xdms:signatory>
+    </xdms:signatories>
+    <xdms:addressees>
+      <xdms:addressee>
+        <xdms:organization>Правительство Вологодской области</xdms:organization>
+        <xdms:person>Кувшинников О.А.</xdms:person>
+        <xdms:post>Губернатор Вологодской области</xdms:post>
+      </xdms:addressee>
+    </xdms:addressees>
+    <xdms:pages>6</xdms:pages>
+    <xdms:annotation>Краткое содержание документа</xdms:annotation>
+    <xdms:correspondents>
+      <xdms:correspondent>
+        <xdms:organization>Администрация города Вологды</xdms:organization>
+        <xdms:person>Ковтун И.А.</xdms:person>
+        <xdms:department>Отдел делопроизводства и архива (ОДА УД)</xdms:department>
+        <xdms:post>заместитель управляющего делами - начальник ОДА УД</xdms:post>
+        <xdms:num>
+          <xdms:number>100-100/1</xdms:number>
+          <xdms:date>2014-11-27</xdms:date>
+        </xdms:num>
+      </xdms:correspondent>
+      <xdms:correspondent>
+        <xdms:organization>Администрация города Вологды</xdms:organization>
+        <xdms:person>Малахова Н.В.</xdms:person>
+        <xdms:department>Управление делами (УД)</xdms:department>
+        <xdms:post>управляющий делами Администрации города Вологды</xdms:post>
+        <xdms:num>
+          <xdms:number>100-100/1</xdms:number>
+          <xdms:date>2014-11-27</xdms:date>
+        </xdms:num>
+      </xdms:correspondent>
+    </xdms:correspondents>
+  </xdms:document>
+  <xdms:files>
+    <xdms:file xdms:localName="ПЛАН.docx" xdms:localId="0">
+      <xdms:group>Текст документа</xdms:group>
+      <xdms:description>ПЛАН.docx</xdms:description>
+    </xdms:file>
+  </xdms:files>
+</xdms:communication>

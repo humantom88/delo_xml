@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xdms:communication xmlns:xdms="http://www.infpres.com/IEDMS" xdms:version="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<xdms:header xdms:type="Квитанция" xdms:uid="5073077B-4E5C-436A-A53A-A205AFBCE374" xdms:created="2014-12-25T10:32:11">
+		<xdms:source xdms:uid="113674e4-123c-4845-8dc3-079861de0fa2">
+			<xdms:organization></xdms:organization>
+		</xdms:source>
+	</xdms:header>
+	<xdms:acknowledgment xdms:uid="6862E362-6B46-478F-B6B4-5E3824650D6A">
+		<xdms:time>2014-12-25T10:32:11</xdms:time>
+		<xdms:accepted>true</xdms:accepted>
+	</xdms:acknowledgment>
+</xdms:communication>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xdms:communication xdms:version="1.0" xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xdms:header xdms:uid="E8892285-EA3B-4A0E-9D88-B386D9AFCFC0" xdms:type="Уведомление" xdms:created="2014-12-07T14:23:14">
+        <xdms:source xdms:uid="8a471cff-98e4-4089-a962-b95a82efeab7">
+            <xdms:organization>Правительство Вологодской области</xdms:organization>
+        </xdms:source>
+    </xdms:header>
+    <xdms:notification xdms:type="Зарегистрирован" xdms:uid="daaf1cc5-b9bd-40e7-b23e-8d1f2804d45d" xdms:id="11284314">
+        <xdms:documentAccepted>
+            <xdms:time>2014-12-07T14:23:14</xdms:time>
+            <xdms:foundation>
+                <xdms:organization>Администрация города Вологды</xdms:organization>
+                <xdms:num>
+                    <xdms:number>100-100/1</xdms:number>
+                    <xdms:date>2014-11-27</xdms:date>
+                </xdms:num>
+            </xdms:foundation>
+            <xdms:correspondent>
+                <xdms:region>Вологодская область</xdms:region>
+                <xdms:organization>Правительство Вологодской области</xdms:organization>
+            </xdms:correspondent>
+            <xdms:num>
+                <xdms:number>ДСП.01-014/14</xdms:number>
+                <xdms:date>2014-12-07</xdms:date>
+            </xdms:num>
+        </xdms:documentAccepted>
+    </xdms:notification>
+</xdms:communication>

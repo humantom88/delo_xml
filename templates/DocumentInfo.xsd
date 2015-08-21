@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.eos.ru/2010/sev" elementFormDefault="qualified" targetNamespace="http://www.eos.ru/2010/sev" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="CommonInfo.xsd" />
+  <xs:element name="DocInfo" nillable="true" type="tns:DocumentInfo" />
+  <xs:complexType name="DocumentInfo">
+    <xs:complexContent>
+      <xs:extension base="tns:BaseComplexType">
+        <xs:sequence>
+          <xs:element name="Header" type="tns:MessageHeader" />
+          <xs:element name="DocumentList" type="tns:DocumentList" />
+          <xs:element minOccurs="0" name="TaskList" type="tns:TaskList" />
+          <xs:element minOccurs="0" name="Subscriptions" type="tns:Subscriptions" />
+          <xs:element minOccurs="0" name="Expansion" type="tns:Expansion" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

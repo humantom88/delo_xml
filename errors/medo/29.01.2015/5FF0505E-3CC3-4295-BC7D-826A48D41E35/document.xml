@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='WINDOWS-1251'?>
+<xdms:communication xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sev="http://www.eos.ru/2010/sev" xdms:version="2.2">
+  <xdms:header xdms:created="2015-01-28T17:28:59" xdms:type="Документ" xdms:uid="5FF0505E-3CC3-4295-BC7D-826A48D41E35">
+    <xdms:source xdms:uid="e1409f5e-f170-4418-abc9-29841e692712">
+      <xdms:organization>Управление культуры и историко-культурного наследия (УКИН)</xdms:organization>
+    </xdms:source>
+  </xdms:header>
+  <xdms:document xdms:uid="5c4722c3-3d82-4f64-8720-56f332a275fa" xdms:id="11914679">
+    <xdms:num>
+      <xdms:number>6-3-0-30/52</xdms:number>
+      <xdms:date>2015-01-28</xdms:date>
+    </xdms:num>
+    <xdms:signatories>
+      <xdms:signatory>
+        <xdms:organization>Управление культуры и историко-культурного наследия (УКИН)</xdms:organization>
+        <xdms:person>Дьяков Н.А.</xdms:person>
+        <xdms:department>Управление культуры и историко-культурного наследия (УКИН)</xdms:department>
+        <xdms:post>начальник УКИН</xdms:post>
+        <xdms:signed>2015-01-28</xdms:signed>
+      </xdms:signatory>
+    </xdms:signatories>
+    <xdms:addressees>
+      <xdms:addressee>
+        <xdms:organization>В.А.Осиповский Департамент культуры и охраны объектов культурного наследия Вологодской области</xdms:organization>
+      </xdms:addressee>
+      <xdms:addressee>
+        <xdms:organization>ДКиООКН - Департамент культуры, туризма и охраны объектов культурного наследия</xdms:organization>
+        <xdms:person>Осиповски В.А.</xdms:person>
+        <xdms:post>начальник</xdms:post>
+      </xdms:addressee>
+    </xdms:addressees>
+    <xdms:pages>1</xdms:pages>
+    <xdms:annotation>О направлении сведений о пожарной безопасности</xdms:annotation>
+    <xdms:correspondents>
+      <xdms:correspondent>
+        <xdms:organization>Управление культуры и историко-культурного наследия (УКИН)</xdms:organization>
+        <xdms:person>Дьяков Н.А.</xdms:person>
+        <xdms:department>Управление культуры и историко-культурного наследия (УКИН)</xdms:department>
+        <xdms:post>начальник УКИН</xdms:post>
+        <xdms:num>
+          <xdms:number>6-3-0-30/52</xdms:number>
+          <xdms:date>2015-01-28</xdms:date>
+        </xdms:num>
+      </xdms:correspondent>
+    </xdms:correspondents>
+  </xdms:document>
+  <xdms:files>
+    <xdms:file xdms:localName="52.pdf" xdms:localId="0" xdms:type="pdf">
+      <xdms:group>Текст документа</xdms:group>
+      <xdms:description>52.pdf</xdms:description>
+    </xdms:file>
+  </xdms:files>
+</xdms:communication>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='WINDOWS-1251'?>
+<xdms:communication xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sev="http://www.eos.ru/2010/sev" xdms:version="2.2">
+  <xdms:header xdms:created="2015-05-19T10:51:04" xdms:type="Документ" xdms:uid="988CA865-60D9-43B5-A517-159D9465E104">
+    <xdms:source xdms:uid="e3db2942-8539-4cec-8ba4-ff8a16ec5f20">
+      <xdms:organization>Департамент градостроительства и инфраструктуры (ДГИ)</xdms:organization>
+    </xdms:source>
+  </xdms:header>
+  <xdms:document xdms:uid="c869e718-c832-4cdc-98ba-bc4611630cdb" xdms:id="13092368">
+    <xdms:num>
+      <xdms:number>13-0-4/4063</xdms:number>
+      <xdms:date>2015-05-14</xdms:date>
+    </xdms:num>
+    <xdms:signatories>
+      <xdms:signatory>
+        <xdms:organization>Департамент градостроительства и инфраструктуры (ДГИ)</xdms:organization>
+        <xdms:person>Соколов Е.В.</xdms:person>
+        <xdms:department>Департамент градостроительства и инфраструктуры (ДГИ)</xdms:department>
+        <xdms:post>и.о. начальника Департамента градостроительства и инфраструктуры</xdms:post>
+        <xdms:signed>2015-05-14</xdms:signed>
+      </xdms:signatory>
+    </xdms:signatories>
+    <xdms:addressees>
+      <xdms:addressee>
+        <xdms:organization>ДСиЖКХ - Департамент строительства и жилищно-коммунального хозяйства ВО</xdms:organization>
+      </xdms:addressee>
+    </xdms:addressees>
+    <xdms:pages>10</xdms:pages>
+    <xdms:annotation>Информация о текущем состоянии дел с организацией сбора, транспортировки, утилизации и др. ТБО в городе Вологде</xdms:annotation>
+    <xdms:correspondents>
+      <xdms:correspondent>
+        <xdms:organization>Департамент градостроительства и инфраструктуры (ДГИ)</xdms:organization>
+        <xdms:person>Соколов Е.В.</xdms:person>
+        <xdms:department>Департамент градостроительства и инфраструктуры (ДГИ)</xdms:department>
+        <xdms:post>и.о. начальника Департамента градостроительства и инфраструктуры</xdms:post>
+        <xdms:num>
+          <xdms:number>13-0-4/4063</xdms:number>
+          <xdms:date>2015-05-14</xdms:date>
+        </xdms:num>
+      </xdms:correspondent>
+    </xdms:correspondents>
+  </xdms:document>
+  <xdms:files>
+    <xdms:file xdms:localName="doc01711620150514160050.pdf" xdms:localId="0" xdms:type="pdf">
+      <xdms:group>Текст документа</xdms:group>
+      <xdms:description>doc01711620150514160050.pdf</xdms:description>
+    </xdms:file>
+  </xdms:files>
+</xdms:communication>

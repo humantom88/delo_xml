@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+	<xdms:communication xdms:version="1.0" xmlns:xdms="http://www.infpres.com/IEDMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<xdms:header xdms:uid="7A2C009E-B112-4587-8E51-0431E1DCDD6A" xdms:type="Уведомление" xdms:created="2014-12-07T11:34:37">
+			<xdms:source xdms:uid="8a471cff-98e4-4089-a962-b95a82efeab7">
+				<xdms:organization>Правительство Вологодской области</xdms:organization>
+			</xdms:source>
+		</xdms:header>
+	<xdms:notification xdms:type="Отказано в регистрации" xdms:uid="daaf1cc5-b9bd-40e7-b23e-8d1f2804d45d" xdms:id="11284314">
+		<xdms:documentRefused>
+			<xdms:time>2014-12-07T11:34:37</xdms:time>
+			<xdms:foundation>
+				<xdms:organization>Администрация города Вологды</xdms:organization>
+				<xdms:num>
+					<xdms:number>100-100/1</xdms:number>
+					<xdms:date>2014-11-27</xdms:date>
+				</xdms:num>
+			</xdms:foundation>
+			<xdms:correspondent>
+				<xdms:region>Вологодская область</xdms:region>
+				<xdms:organization>Правительство Вологодской области</xdms:organization>
+			</xdms:correspondent>
+			<xdms:reason>Не подлежит регистрации</xdms:reason>
+		</xdms:documentRefused>
+	</xdms:notification>
+</xdms:communication>

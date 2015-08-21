@@ -1,0 +1,73 @@
+<sev:Report xmlns:sev="http://www.eos.ru/2010/sev" xmlns:xdms="http://www.infpres.com/IEDMS">
+  <sev:Header MessageType="Report" Version="1.0" ReturnID="96b7001050924b6799202e738c9661f0" ResourceID="0" MessageID="F51D75A8-9CF8-4896-BE5C-B2A48D85E9A1" Time="2015-04-06T12:20:44">
+    <sev:Sender>
+      <sev:Contact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <sev:Organization UID="DF45D11D-BBF0-4A6D-81A1-1EA3D712A37F">
+          <sev:ShortName>ДКиООКН - Департамент культуры, туризма и охраны объектов культурного наследия</sev:ShortName>
+        </sev:Organization>
+        <sev:OfficialPerson>
+          <sev:FIO>Осиповский В.А.</sev:FIO>
+          <sev:Post>начальник</sev:Post>
+        </sev:OfficialPerson>
+      </sev:Contact>
+      <sev:EDMS UID="4313BCFDAD6A422EA375EF34BB248BCD" Version="12.0.0"/>
+    </sev:Sender>
+    <sev:Recipient>
+      <sev:Contact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <sev:Organization UID="e3db2942-8539-4cec-8ba4-ff8a16ec5f20">
+          <sev:ShortName>Департамент градостроительства и инфраструктуры (ДГИ)</sev:ShortName>
+        </sev:Organization>
+        <sev:Address>
+          <sev:ZipCode>160000</sev:ZipCode>
+          <sev:Region>Вологодская область</sev:Region>
+          <sev:Settlement>Вологда</sev:Settlement>
+          <sev:Text>ул. Марии Ульяновой, д.6а</sev:Text>
+        </sev:Address>
+      </sev:Contact>
+    </sev:Recipient>
+    <sev:ResourceList>
+      <sev:Resource UID="0" UniqueName="Report.xml"/>
+    </sev:ResourceList>
+  </sev:Header>
+  <sev:Notification>
+    <sev:InitialDoc UID="d9e76499f05b432d92720f17e3ce86ec">
+      <sev:Number>13-0-4/2540/2760</sev:Number>
+      <sev:Date>2015-04-03</sev:Date>
+      <sev:Group>Письмо исх. (ДГИ)</sev:Group>
+    </sev:InitialDoc>
+    <sev:Registration SystemDate="2015-04-06T12:20:44+03:00" DocumentID="12627332"/>
+  </sev:Notification>
+  <sev:DocumentList>
+    <sev:Document MainDocument="false" Type="Incoming" UID="d9e76499f05b432d92720f17e3ce86ec" DocumentID="12627332">
+      <sev:RegistrationInfo>
+        <sev:Number>ВХ.18-1660/15</sev:Number>
+        <sev:Date>2015-04-06</sev:Date>
+      </sev:RegistrationInfo>
+      <sev:Author xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <sev:Contact>
+          <sev:Organization UID="e3db2942-8539-4cec-8ba4-ff8a16ec5f20">
+            <sev:ShortName>Департамент градостроительства и инфраструктуры (ДГИ)</sev:ShortName>
+          </sev:Organization>
+          <sev:Department>
+            <sev:Name>Департамент градостроительства и инфраструктуры (ДГИ)</sev:Name>
+            <sev:Index>13</sev:Index>
+          </sev:Department>
+          <sev:OfficialPerson>
+            <sev:FIO>Соколов Е.В.</sev:FIO>
+            <sev:Post>и.о. начальника Департамента градостроительства и инфраструктуры</sev:Post>
+          </sev:OfficialPerson>
+          <sev:Address>
+            <sev:ZipCode>160000</sev:ZipCode>
+            <sev:Region>Вологодская область</sev:Region>
+            <sev:Settlement>Вологда</sev:Settlement>
+            <sev:Text>ул. Марии Ульяновой, д.6а</sev:Text>
+          </sev:Address>
+        </sev:Contact>
+        <sev:RegistrationInfo>
+          <sev:Number>13-0-4/2540/2760</sev:Number>
+          <sev:Date>2015-04-03</sev:Date>
+        </sev:RegistrationInfo>
+      </sev:Author>
+    </sev:Document>
+  </sev:DocumentList>
+</sev:Report>
