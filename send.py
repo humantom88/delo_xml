@@ -241,7 +241,7 @@ class MedoMesage(object):
                                 'DOCUMENT_UID' : document_uid, # GUID документа
                                 'AGV_GUID' : department_uid # GUID Администрации города Вологды. Постоянный.
                                 }
-            else: 
+            else:
                 self._is_failure = True
                 self._logger._log("The Acknowledgment with GUID: " + transport_guid + " has no initial document in delo database. Document will not process.")
         else: 
@@ -959,7 +959,6 @@ class MessageBroker(object):
                         self._logger._log('Outbound file: \'' + subfilename + '\' processing begins.')
                         MedoMesage(message_uid=subfilename.split('.')[0], message_broker=self, current_process_dir=os.path.join(self._DIRS['SEND_DIR'],filename)).send()
 
-
     def _process_receive_folder(self):
         "Обработка директории входящих писем из МЭДО"
         # Просмотрим все имена в директории входящих писем МЭДО
@@ -974,6 +973,7 @@ class MessageBroker(object):
                         os.rename(path, path_new)
                 self._logger._log('Inbound file: \'' + filename +'\' processing begins.')
                 DELOMessage(message_uid=filename, message_broker=self).receive()
+
     def _check_receive_folder(self):
         try:
             if not os.path.exists(self._DIRS['RECEIVE_DIR']):
